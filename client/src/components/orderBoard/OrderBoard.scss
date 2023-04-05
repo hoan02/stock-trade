@@ -1,0 +1,89 @@
+.orderBoard{
+  color: #ffffff;
+  
+  .dataGrid{
+    color: #ffffff;
+    background-color: #37273a;
+    border-radius: 10px;
+
+    .MuiDataGrid-row:hover {
+      background-color: #3a1341;
+    }
+
+    .id{
+      padding-left: 80px;
+    }
+
+    .buyRow {
+      // background-color: #2397fc;
+      // color: #0085fa;
+    }
+    
+    .sellRow {
+      // background-color: #fd6b3f;
+      // color: #ff3c00;
+    }
+
+    .stockNameCell{
+      font-weight: bold;
+      color: #0bdf39;
+    }
+
+    .buyRow{
+      .statusCell {
+        background-color:#0bdf39;
+      }
+    }
+
+    .statusCell{
+      justify-content: center;
+    }
+
+    .sellRow{
+      .statusCell {
+        background-color:#ff0017;
+      }
+    }
+
+    .traderCell{
+      justify-content: center;
+      font-weight: 500;
+      color: #f23aff;
+    }
+
+    .priceCell{
+      font-weight: 400;
+      color: #fdff12;
+    }
+
+    .quantityCell{
+      font-weight: 600;
+      color: #ff0017;
+    }
+
+    .totalCell{
+      font-weight: 600;
+      color: #0bdf39;
+    }
+
+    .datetimeCell{
+
+    }
+
+    .idCell{
+      color: #00c9ff;
+    }
+
+    .notIsDoneRow{
+      // &.isDoneCell{
+        color: #0bdf39;
+      // }
+    }
+
+
+    .MuiTablePagination-root {
+      color: white;
+    }
+
+  }
+}
