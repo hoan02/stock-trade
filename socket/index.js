@@ -23,7 +23,7 @@ const removeUser = (socketId) => {
 };
 
 const getUser = (userId) => {
-  return users.find((user) => user.userId === userId) || null;
+  return users.find((user) => user.userId === userId);
 };
 
 io.on("connection", (socket) => {
@@ -33,22 +33,21 @@ io.on("connection", (socket) => {
   //take userId and socketId from user
   socket.on("addUser", (userId) => {
     addUser(userId, socket.id);
+    console.log(users)
     io.emit("getUsers", users);
   });
 
+
   //send and get message
   socket.on("matchOrder", ( idMatch ) => {
-    console.log(idMatch)
-    console.log(users)
-    // try {
-    //   const user = getUser(idMatch);
-    //   console.log(user.socketId)
-    //   io.to(user.socketId).emit("getMessage", {
-    //     message: "ô sờ kê"
-    //   });
-    // } catch (error) {
-    //   console.log(error)
-    // }
+    try {
+      const user = getUser(idMatch);
+      io.to(user.socketId).emit("getMessage", {
+        message: "ô sờ kê"
+      });
+    } catch (error) {
+      console.log(error)
+    }
   });
 
   //send and get message

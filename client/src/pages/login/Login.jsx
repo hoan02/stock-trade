@@ -4,7 +4,6 @@ import NewRequest from "../../utils/NewRequest";
 import { useNavigate } from "react-router-dom";
 import ToastService from "../../utils/ToastService.js";
 
-import { socket } from "../home/Home";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -18,7 +17,6 @@ function Login() {
       const res = await NewRequest.post("auth/login", { username, password });
       localStorage.setItem("currentUser", JSON.stringify(res.data));
       ToastService.success("Login successfully!");
-      socket.emit("addUser", res.data._id);
       navigate("/");
     } catch (err) {
       setError(err.response.data);

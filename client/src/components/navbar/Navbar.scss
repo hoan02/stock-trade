@@ -6,20 +6,28 @@
 
   .logo{
     height: 100%;
+    min-width: 250px;
     display: flex;
-    img{
-      margin: auto;
-      height: 40px;
+    justify-content: center;
+
+    .content-logo{
+      display: flex;
+      cursor: pointer;
+      img{
+        margin: auto 0;
+        height: 40px;
+      }
+      .title-logo{
+        color: white;
+        font-size: 30px;
+        font-weight: bold;
+        line-height: 1;
+        height: 30px;
+        width: 150px;
+        margin: auto 0;
+      }
     }
-    .title-logo{
-      color: white;
-      font-size: 30px;
-      font-weight: bold;
-      line-height: 1;
-      height: 30px;
-      width: 150px;
-      margin: auto;
-    }
+
   }
 
   .right{
@@ -109,11 +117,14 @@
       height: 30px;
       justify-content: space-between;
       padding: 3px 10px;
-      .menu{
+      .menu-bar{
         display: flex;
-        justify-content: space-between;
         .item{
           width: 100px;
+          text-align: center;
+          &:hover{
+            opacity: 0.8;
+          }
         }
       }
 
@@ -125,6 +136,18 @@
           color: rgb(172, 172, 172);
           border-left: 1px solid gray;
           border-right: 1px solid gray;
+        }
+        .status{
+          margin: auto 10px;
+          font-size: 12px;
+
+          .connected{
+            color: #09ff00;
+          }
+  
+          .disconnected{
+            color: #ff4625;
+          }
         }
       }
     }

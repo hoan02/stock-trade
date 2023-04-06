@@ -5,6 +5,7 @@ import "./OrderBoard.scss";
 const columns = [
   {
     field: "stock_name",
+    headerClassName: "stockName",
     cellClassName: "stockNameCell",
     headerName: "Tên CP",
     width: 100,
@@ -19,28 +20,28 @@ const columns = [
     field: "trader",
     cellClassName: "traderCell",
     headerName: "Người tạo lệnh",
-    width: 110,
+    width: 120,
   },
   {
     field: "price",
     cellClassName: "priceCell",
     headerName: "Giá (1 CP)",
     type: "number",
-    width: 110,
+    width: 120,
   },
   {
     field: "quantity",
     cellClassName: "quantityCell",
     headerName: "Số lượng",
     type: "number",
-    width: 110,
+    width: 120,
   },
   {
     field: "total",
     cellClassName: "totalCell",
     headerName: "Tổng (USD)",
     type: "number",
-    width: 160,
+    width: 150,
   },
   {
     field: "datetime",
@@ -59,7 +60,7 @@ const columns = [
     field: "isDone",
     cellClassName: "isDoneCell",
     headerName: "Done",
-    width: 60,
+    width: 50,
   },
 ];
 
@@ -92,13 +93,13 @@ const OrderBoard = ({ data }) => {
       price: item.price,
       quantity: item.quantity,
       total: item.total,
-      isDone: item.isDone,
+      isDone: item.isDone?"✔":"✘",
       datetime: moment(item.createdAt).format("HH:mm DD/MM/YYYY"),
     };
   });
 
   return (
-    <div className="orderBoard" style={{ height: 600, width: "100%" }}>
+    <div className="orderBoard" style={{ height: "100%", width: "100%" }}>
       <DataGrid
         className="dataGrid"
         rows={stockData}

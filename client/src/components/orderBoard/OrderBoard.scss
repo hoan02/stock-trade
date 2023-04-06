@@ -4,10 +4,13 @@
   .dataGrid{
     color: #ffffff;
     background-color: #37273a;
-    border-radius: 10px;
 
     .MuiDataGrid-row:hover {
       background-color: #3a1341;
+    }
+
+    .stockName{
+      padding-left: 30px;
     }
 
     .id{
@@ -25,13 +28,14 @@
     }
 
     .stockNameCell{
+      justify-content: center;
       font-weight: bold;
-      color: #0bdf39;
+      color: #00BB00;
     }
 
     .buyRow{
       .statusCell {
-        background-color:#0bdf39;
+        background-color:#279e41;
       }
     }
 
@@ -41,7 +45,7 @@
 
     .sellRow{
       .statusCell {
-        background-color:#ff0017;
+        background-color:#d31323;
       }
     }
 
@@ -63,7 +67,7 @@
 
     .totalCell{
       font-weight: 600;
-      color: #0bdf39;
+      color: #00FF00;
     }
 
     .datetimeCell{
@@ -74,6 +78,13 @@
       color: #00c9ff;
     }
 
+    .isDoneCell{
+      color: #9900FF;
+      font-size: 20px;
+      font-weight: bold;
+      justify-content: center;
+    }
+    
     .notIsDoneRow{
       // &.isDoneCell{
         color: #0bdf39;

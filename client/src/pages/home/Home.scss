@@ -2,43 +2,114 @@
 
 
   .container{
-    margin: 0 auto;
-    max-width: 1240px;
+    width: 100%;
+    height: calc(100vh - 60px);
+    display: flex;
 
-    .order{
-      margin-top: 20px;
-      display: flex;
-      justify-content: space-between;
-
-      .btnOrder{
-        padding: 5px 10px;
-        border: 1px solid #b1b1b1;
-        color: #ffffff;
-        background: #368d45;
-        border-radius: 5px;
-        cursor: pointer;
-
-        &:hover{
-          opacity: 0.9;
-        }
-      }
+    .menu{
+      width: 250px;
+      height: 100%;
+      background-color: #292737;
+      border-top: 1px solid #ffffff;
 
       .boss{
-        margin: auto 0;
-        color: #000770;
+        width: 100%;
+        padding: 10px;
+        color: #d6d6d6;
         font-weight: 500;
-        font-size: 20px;
+        font-size: 16px;
+
+        .title{
+          text-align: center;
+          color: #ffffff;
+          font-size: 30px;
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
 
         .money{
+          padding: 10px 0;
+          text-align: center;
           font-weight: bold;
-          color: #f80606;
+          color: #d006f8;
+          font-size: 24px;
         }
+
+        
       }
+
+      .formOrder{
+        padding: 10px;
+        font-size: 14px;
+
+        .line{
+          border-top: 1px solid #ffffff;
+        }
+
+        .form{
+          color: #ffffff;
+          margin: 10px;
+          .title{
+            font-size: 30px;
+            color: #ffffff;
+            font-weight: bold;
+            text-align: center;
+          }
+
+          .item{
+            margin: 10px 0;
+
+            input{
+              color: #ffffff;
+              background-color: #5d3b6d;
+              padding: 5px 10px;
+              margin: 5px 0;
+              border: 1px solid #d6d6d6;
+              border-radius: 5px;
+            }
+
+            .radio{
+              margin: 5px 10px;
+              input{
+                margin: 5px;
+              }
+            }
+
+            .error{
+              border-left: 5px solid #ff4747;
+            }
+
+            .errorText{
+              color: #ff4747;
+            }
+          }
+
+          .btnSubmit{
+            display: flex;
+            justify-content: center;
+            button{
+              color: #ffffff;
+              background-color: #4a37f5;
+              font-weight: 500;
+              padding: 5px 30px;
+              border: 1px solid #d6d6d6;
+              border-radius: 5px;
+              cursor: pointer;
+
+              &:hover{
+                opacity: 0.9;
+              }
+            }
+          }
+        }
+
+      }
+      
     }
 
     .orderBoard{
-      width: 100%;
-      margin-bottom: 50px;
+      flex: 1;
+      height: 100%;
 
       .title{
         color: #1a9c00;

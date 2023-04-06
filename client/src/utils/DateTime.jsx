@@ -13,13 +13,9 @@ function DateTime() {
   }, []);
 
   return (
-    <div className="date-time">
-      {time.format("HH:mm:ss")}, ngày
-      {time.format(" DD ")}
-      tháng
-      {time.format(" MM ")}
-      năm
-      {time.format(" YYYY")}
+    <div className="date-time" style={{ color: "#f7941d", fontSize: 14 }}>
+      <span style={{ fontWeight: "600" }}>{time.format("HH:mm:ss")} </span>
+      <span> {time.format("DD/MM/YYYY")}</span>
     </div>
   );
 }

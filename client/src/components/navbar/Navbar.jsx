@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+
 import Logo from "../../assets/images/logo-utc.png";
 import iconBell from "../../assets/images/chuong.png";
 import DateTime from "../../utils/DateTime";
@@ -10,6 +12,12 @@ import "./Navbar.scss";
 const Navbar = () => {
   const navigate = useNavigate();
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+  const [value, setValue] = useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   const handleLogout = async () => {
     try {
@@ -25,9 +33,11 @@ const Navbar = () => {
 
   return (
     <div className="navbar">
-      <div className="logo">
-        <img src={Logo} alt="" />
-        <div className="title-logo">UTC town.</div>
+      <div className="logo" onClick={() => navigate(`/`)}>
+        <div className="content-logo">
+          <img src={Logo} alt="" />
+          <div className="title-logo">UTC town.</div>
+        </div>
       </div>
 
       <div className="right">
@@ -57,15 +67,29 @@ const Navbar = () => {
           </div>
         </div>
         <div className="bot-right">
-          <div className="menu">
-            <div className="item">Menu 1</div>
-            <div className="item">Menu 2</div>
-            <div className="item">Menu 3</div>
-            <div className="item">Menu 4</div>
-            <div className="item">Menu 5</div>
+          <div className="menu-bar">
+            <Link className="item link" to="/history">
+              History
+            </Link>
+            <Link className="item link" to="/">
+              menu2
+            </Link>
+            <Link className="item link" to="/">
+              menu3
+            </Link>
+            <Link className="item link" to="/">
+              menu4
+            </Link>
           </div>
           <div className="sub">
             <DateTime />
+            <div className="status">
+              {currentUser ? (
+                <span className="connected">● Connected</span>
+              ) : (
+                <span className="disconnected">☉ Disconnected</span>
+              )}
+            </div>
           </div>
         </div>
       </div>
