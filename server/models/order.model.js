@@ -36,6 +36,10 @@ const orderSchema = new Schema(
     isDone:{
       type: Boolean,
       default: false,
+    },
+    idMatch:{
+      type: String,
+      required: false,
     }
   },
   {

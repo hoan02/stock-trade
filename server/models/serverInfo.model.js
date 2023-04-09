@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
-const bossSchema = new Schema(
+const serverInfoSchema = new Schema(
   {
     money: {
       type: Number,
@@ -13,4 +13,4 @@ const bossSchema = new Schema(
   }
 );
 
-export default mongoose.model("Boss", bossSchema);
+export default mongoose.model("ServerInfo", serverInfoSchema);

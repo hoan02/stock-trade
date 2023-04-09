@@ -16,11 +16,11 @@ app.use(cookieParser());
 // Api
 import authRoute from "./routes/auth.route.js";
 import orderRoute from "./routes/order.route.js";
-import bossRoute from "./routes/boss.route.js";
+import serverInfoRoute from "./routes/serverInfo.route.js";
 
 app.use("/api/auth", authRoute);
 app.use("/api/orders", orderRoute);
-app.use("/api/boss", bossRoute);
+app.use("/api/server", serverInfoRoute);
 
 
 app.use((err, req, res, next) => {

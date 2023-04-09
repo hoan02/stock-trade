@@ -1,9 +1,9 @@
 import express from "express";
-import { getMoneyBoss } from "../controllers/boss.controller.js";
+import { getMoneySever } from "../controllers/serverInfo.controller.js";
 
 const router = express.Router();
 
-router.get("/money", getMoneyBoss);
+router.get("/info/money", getMoneySever);
 // router.post("/", createOrder);
 
 export default router;

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Register.scss";
 import NewRequest from "../../utils/NewRequest";
+import ToastService from "../../utils/ToastService.js";
 import { useNavigate } from "react-router-dom";
 
 function Register() {
@@ -28,6 +29,7 @@ function Register() {
       await NewRequest.post("auth/register", {
         ...user,
       });
+      ToastService.success("Create account successfully!");
       navigate("/");
     } catch (err) {
       console.log(err);

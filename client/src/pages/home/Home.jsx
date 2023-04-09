@@ -16,7 +16,6 @@ const Home = () => {
   const queryClient = useQueryClient();
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const [total, setTotal] = useState(0);
-  const [onlineUser, setOnlineUser] = useState([]);
 
   useEffect(() => {
     if (currentUser) socket.emit("addUser", currentUser._id);
@@ -33,7 +32,7 @@ const Home = () => {
   const { data: moneyBoss, isLoading: isLoadingMoney } = useQuery({
     queryKey: ["moneyBoss"],
     queryFn: async () => {
-      const response = await NewRequest.get(`/boss/money`);
+      const response = await NewRequest.get(`/server/info/money`);
       return response.data.money;
     },
   });
@@ -52,11 +51,13 @@ const Home = () => {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm();
 
   const price = watch("price");
   const quantity = watch("quantity");
+
   useEffect(() => {
     const newTotal = parseFloat(price) * parseFloat(quantity);
     setTotal(newTotal.toFixed(2));
@@ -65,11 +66,11 @@ const Home = () => {
   const onSubmit = async (data) => {
     const dataReq = {
       ...data,
-      userId: currentUser._id,
       total,
       trader: currentUser.username,
     };
     createMutation.mutate(dataReq);
+    reset();
   };
 
   const createMutation = useMutation({
@@ -83,12 +84,14 @@ const Home = () => {
       const idMatch = data.data.idMatch;
       if (isDone) {
         ToastService.success(idMatch);
+        queryClient.invalidateQueries(["moneyBoss"]);
         socket.emit("matchOrder", idMatch);
       } else {
         ToastService.success("Tạo lệnh mới thành công!");
       }
     },
   });
+
 
   return (
     <div className="home">
@@ -110,8 +113,18 @@ const Home = () => {
                   <div className="item">
                     <div>Tên cổ phiếu:</div>
                     <input
-                      className={errors.stock_name ? "error" : ""}
-                      {...register("stock_name", { required: true })}
+                      className={
+                        "stockName" + (errors.stock_name ? " error" : "")
+                      }
+                      type="text"
+                      autoCapitalize="characters"
+                      maxLength={3}
+                      {...register("stock_name", {
+                        required: true,
+                        setValueAs: (value) => {
+                          return value.toUpperCase();
+                        },
+                      })}
                     />
                   </div>
                   <div className="item">
@@ -119,17 +132,17 @@ const Home = () => {
                     <span className={errors.status ? "error" : ""}></span>
                     <span className="radio">
                       <input
-                        {...register("status", { required: true })}
                         type="radio"
                         value="Buy"
+                        {...register("status", { required: true })}
                       />
                       Buy
                     </span>
                     <span className="radio">
                       <input
-                        {...register("status", { required: true })}
                         type="radio"
                         value="Sell"
+                        {...register("status", { required: true })}
                       />
                       Sell
                     </span>
@@ -139,8 +152,9 @@ const Home = () => {
                     <input
                       className={errors.price ? "error" : ""}
                       type="number"
-                      {...register("price", { required: true })}
                       step="0.01"
+                      min="0"
+                      {...register("price", { required: true })}
                     />
                   </div>
                   <div className="item">
@@ -148,6 +162,7 @@ const Home = () => {
                     <input
                       className={errors.quantity ? "error" : ""}
                       type="number"
+                      min="0"
                       {...register("quantity", { required: true })}
                     />
                   </div>

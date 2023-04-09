@@ -68,18 +68,22 @@ const Navbar = () => {
         </div>
         <div className="bot-right">
           <div className="menu-bar">
-            <Link className="item link" to="/history">
-              History
-            </Link>
-            <Link className="item link" to="/">
-              menu2
-            </Link>
-            <Link className="item link" to="/">
-              menu3
-            </Link>
-            <Link className="item link" to="/">
-              menu4
-            </Link>
+            {currentUser && (
+              <>
+                <Link className="item link" to="/my-orders">
+                  MY ORDERS
+                </Link>
+                <Link className="item link" to="/">
+                  menu2
+                </Link>
+                <Link className="item link" to="/">
+                  menu3
+                </Link>
+                <Link className="item link" to="/">
+                  menu4
+                </Link>
+              </>
+            )}
           </div>
           <div className="sub">
             <DateTime />

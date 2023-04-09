@@ -7,10 +7,9 @@ import Navbar from "./components/navbar/Navbar";
 import Home from "./pages/Home/Home";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
+import MyOrders from "./pages/myOrders/MyOrders";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.scss";
-import History from "./pages/history/History";
-
 const queryClient = new QueryClient();
 
 const App = () => {
@@ -22,7 +21,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/history" element={<History />} />
+          <Route path="/my-orders" element={<MyOrders />} />
         </Routes>
         <ToastContainer autoClose={2000} draggablePercent={60} />
       </QueryClientProvider>

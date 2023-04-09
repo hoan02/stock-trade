@@ -1,5 +1,5 @@
 .home{
-
+  background-color: #292737;
 
   .container{
     width: 100%;
@@ -11,6 +11,7 @@
       height: 100%;
       background-color: #292737;
       border-top: 1px solid #ffffff;
+      border-bottom: 1px solid #ffffff;
 
       .boss{
         width: 100%;
@@ -59,8 +60,13 @@
           .item{
             margin: 10px 0;
 
+            .stockName{
+              text-transform: uppercase;
+            }
+
             input{
               color: #ffffff;
+              caret-color: #00ff15;
               background-color: #5d3b6d;
               padding: 5px 10px;
               margin: 5px 0;
