@@ -74,9 +74,6 @@ const Navbar = () => {
                   MY ORDERS
                 </Link>
                 <Link className="item link" to="/">
-                  menu2
-                </Link>
-                <Link className="item link" to="/">
                   menu3
                 </Link>
                 <Link className="item link" to="/">

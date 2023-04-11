@@ -1,7 +1,39 @@
 .myOrders{
-
+  overflow: hidden;
   .container{
+    position: relative;
+    top: 0;
+    left: 0;
     width: 100%;
     height: calc(100vh - 60px);
+
+    .detail{
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+
+      .close{
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        cursor: pointer;
+
+        img{
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+
+          &:hover{
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+
+    .orderBoard{
+      z-index: 1;
+    }
   }
 }

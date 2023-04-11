@@ -1,11 +1,13 @@
 import moment from "moment";
 import { DataGrid } from "@mui/x-data-grid";
 
-import { columns } from "../../utils/configColums";
 import "./OrderBoard.scss";
 
-const OrderBoard = ({ data }) => {
-  // console.log(data);
+const OrderBoard = ({ data, columns }) => {
+  const handleIconClick = (id) => {
+    console.log(id);
+    // TODO: Xử lý khi người dùng click vào icon
+  };
 
   // Define the getRowClassName function
   const getRowClassName = (params) => {
@@ -15,9 +17,9 @@ const OrderBoard = ({ data }) => {
     if (params.row.status === "Sell") {
       return "sellRow";
     }
-    if (params.row.isDone === true) {
-      return "isDoneRow";
-    }
+    // if (params.row.isDone === true) {
+    //   return "isDoneRow";
+    // }
     // if (params.row.isDone === false) {
     //   return "notIsDoneRow";
     // }
@@ -33,7 +35,7 @@ const OrderBoard = ({ data }) => {
       price: item.price,
       quantity: item.quantity,
       total: item.total,
-      isDone: item.isDone ? "✔" : "✘",
+      state: item.state,
       datetime: moment(item.createdAt).format("HH:mm DD/MM/YYYY"),
     };
   });
@@ -44,8 +46,8 @@ const OrderBoard = ({ data }) => {
         className="dataGrid"
         rows={stockData}
         columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
+        // pageSize={5}
+        // rowsPerPageOptions={[5]}
         getRowClassName={getRowClassName}
         // checkboxSelection
       />

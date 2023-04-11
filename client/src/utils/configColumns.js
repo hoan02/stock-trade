@@ -50,12 +50,12 @@ export const columns = [
     headerClassName: "id",
     cellClassName: "idCell",
     headerName: "ID",
-    width: 300,
+    width: 250,
   },
   {
-    field: "isDone",
-    cellClassName: "isDoneCell",
-    headerName: "Done",
-    width: 50,
+    field: "state",
+    cellClassName: "stateCell",
+    headerName: "Tình trạng",
+    width: 100,
   },
 ];

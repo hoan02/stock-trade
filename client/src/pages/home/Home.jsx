@@ -4,9 +4,11 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import io from "socket.io-client";
 import { useForm } from "react-hook-form";
 
+
 import NewRequest from "../../utils/NewRequest.js";
 import ToastService from "../../utils/ToastService.js";
 import OrderBoard from "../../components/orderBoard/OrderBoard.jsx";
+import { columns } from "../../utils/configColumns";
 import "./Home.scss";
 
 export const socket = io.connect("http://localhost:8900");
@@ -91,7 +93,6 @@ const Home = () => {
       }
     },
   });
-
 
   return (
     <div className="home">
@@ -185,7 +186,7 @@ const Home = () => {
               <h1>Loading...</h1>
             </div>
           ) : (
-            <OrderBoard data={allOrder} />
+            <OrderBoard data={allOrder} columns={columns}/>
           )}
         </div>
       </div>
