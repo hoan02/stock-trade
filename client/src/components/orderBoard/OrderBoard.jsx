@@ -1,5 +1,5 @@
 import moment from "moment";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 
 import "./OrderBoard.scss";
 
@@ -49,6 +49,7 @@ const OrderBoard = ({ data, columns }) => {
         // pageSize={5}
         // rowsPerPageOptions={[5]}
         getRowClassName={getRowClassName}
+        components={{ Toolbar: GridToolbar }}
         // checkboxSelection
       />
     </div>

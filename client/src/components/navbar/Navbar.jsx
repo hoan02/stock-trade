@@ -25,7 +25,7 @@ const Navbar = () => {
       localStorage.setItem("currentUser", null);
       ToastService.success("Logout Success!");
       navigate("/");
-      window.location.reload();
+      // window.location.reload();
     } catch (err) {
       ToastService.error(err);
     }
@@ -68,17 +68,17 @@ const Navbar = () => {
         </div>
         <div className="bot-right">
           <div className="menu-bar">
+            <Link className="item link" to="/">
+              HOME
+            </Link>
             {currentUser && (
               <>
                 <Link className="item link" to="/my-orders">
                   MY ORDERS
                 </Link>
-                <Link className="item link" to="/">
-                  menu3
-                </Link>
-                <Link className="item link" to="/">
-                  menu4
-                </Link>
+                {/* <Link className="item link" to="/">
+                  menu2
+                </Link> */}
               </>
             )}
           </div>

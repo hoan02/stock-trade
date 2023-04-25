@@ -18,7 +18,6 @@ const MyOrders = () => {
   const [isShowDetails, setIsShowDetails] = useState(false);
 
   const handleExit = () => {
-    console.log("ok");
     setIsShowDetails(false);
   };
 
@@ -35,7 +34,7 @@ const MyOrders = () => {
             const res = await NewRequest.get(`/orders/my-orders/${params.id}`);
             // navigate(`${params.id}`);
             setDataDetails(res.data.data);
-            setIsShowDetails(true);
+            setIsShowDetails(!isShowDetails);
           }}
         >
           <SettingsIcon />
@@ -58,7 +57,7 @@ const MyOrders = () => {
       <div className="container">
         {isShowDetails && (
           <div className="detail">
-            <Details data={dataDetails} />
+            <Details data={dataDetails} setIsShowDetails={setIsShowDetails} />
             <div className="close" onClick={handleExit}>
               <img src={iconClose} alt="" />
             </div>

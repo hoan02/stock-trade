@@ -1,12 +1,29 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import NewRequest from "../../utils/NewRequest";
 import ToastService from "../../utils/ToastService.js";
 import "./Details.scss";
+import { socket } from "../../pages/Home/Home";
+import { useNavigate } from "react-router-dom";
 
-const Details = ({ data }) => {
+const Details = ({ data, setIsShowDetails }) => {
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const updateMutation = useMutation({
+    mutationFn: (id) => {
+      NewRequest.put(`orders/my-orders/${id}`);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(["orders"]);
+      // console.log(res);
+      // socket.emit("newOrder");
+      navigate(`/`);
+      setIsShowDetails(false);
+      ToastService.success(`Bạn đã hủy lệnh!`);
+    },
+  });
+
   const handleCancel = async () => {
-    NewRequest.put(`orders/my-orders/${data._id}`).then(() => {
-      ToastService.success("Bạn đã hủy lệnh data._id");
-    });
+    updateMutation.mutate(data._id);
   };
 
   return (

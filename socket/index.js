@@ -1,4 +1,4 @@
-import http from 'http';
+import http from "http";
 import { Server } from "socket.io";
 import express from "express";
 
@@ -33,20 +33,19 @@ io.on("connection", (socket) => {
   //take userId and socketId from user
   socket.on("addUser", (userId) => {
     addUser(userId, socket.id);
-    console.log(users)
+    console.log(users);
     io.emit("getUsers", users);
   });
 
-
   //send and get message
-  socket.on("matchOrder", ( idMatch ) => {
+  socket.on("matchOrder", (idMatch, message) => {
     try {
       const user = getUser(idMatch);
       io.to(user.socketId).emit("getMessage", {
-        message: "ô sờ kê"
+        message: message,
       });
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   });
 
@@ -68,5 +67,5 @@ io.on("connection", (socket) => {
 });
 
 server.listen(8900, () => {
-  console.log('Socket listening on: http://localhost:8900');
+  console.log("Socket listening on: http://localhost:8900");
 });

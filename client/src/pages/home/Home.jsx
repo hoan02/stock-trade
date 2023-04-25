@@ -4,7 +4,6 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import io from "socket.io-client";
 import { useForm } from "react-hook-form";
 
-
 import NewRequest from "../../utils/NewRequest.js";
 import ToastService from "../../utils/ToastService.js";
 import OrderBoard from "../../components/orderBoard/OrderBoard.jsx";
@@ -80,16 +79,17 @@ const Home = () => {
       return NewRequest.post(`/orders`, dataReq);
     },
     onSuccess: (data) => {
+      console.log(data.data);
+      ToastService.success(data.data.message);
       queryClient.invalidateQueries(["orders"]);
       socket.emit("newOrder");
-      const isDone = data.data.isDone;
+      const isDone = data.data.state === "done";
       const idMatch = data.data.idMatch;
+      console.log(isDone);
       if (isDone) {
-        ToastService.success(idMatch);
         queryClient.invalidateQueries(["moneyBoss"]);
-        socket.emit("matchOrder", idMatch);
-      } else {
-        ToastService.success("Tạo lệnh mới thành công!");
+        const message = data.data.messageMatch;
+        socket.emit("matchOrder", idMatch, message);
       }
     },
   });
@@ -186,7 +186,7 @@ const Home = () => {
               <h1>Loading...</h1>
             </div>
           ) : (
-            <OrderBoard data={allOrder} columns={columns}/>
+            <OrderBoard data={allOrder} columns={columns} />
           )}
         </div>
       </div>
